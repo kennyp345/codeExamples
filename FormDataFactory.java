@@ -55,11 +55,11 @@ public final class FormDataFactory {
 	private FormDataFactory() {
 		//private constructor to thwart instantiation of a static class
 			
-    	IFLOWHelper.logDebug("Running FormDataFactory() constructor");
+    		//Logging ("Running FormDataFactory() constructor");
 
-    	loadFormDataFiles(); //Load form data file contents
+    		loadFormDataFiles(); //Load form data file contents
 
-		IFLOWHelper.logDebug("End FormDataFactory() constructor");	
+		//Logging ("End FormDataFactory() constructor");	
 	}
 	
     /**
@@ -83,11 +83,11 @@ public final class FormDataFactory {
 				//Get the currently locked value of singleton
 				fdf = singleton;
 				if (fdf == null) {
-	            	//Initializes the intermediary "fdf" with the new instance
-	            	//Initializes the "singleton" with the value of the intermediary "fdf"
-	            	//This allows the singleton to be accessed once so only a complete variable is set
+	            			//Initializes the intermediary "fdf" with the new instance
+	            			//Initializes the "singleton" with the value of the intermediary "fdf"
+	            			//This allows the singleton to be accessed once so only a complete variable is set
 					//"singleton" is declared as volatile so this change is atomic
-	            	singleton = fdf = new FormDataFactory();
+	            			singleton = fdf = new FormDataFactory();
 				}
 			}
 		}
@@ -120,14 +120,14 @@ public final class FormDataFactory {
         try {
         	//logging ("loadFormDataFiles -- start");
         	
-			dataObjMap = new TreeMap<String, String>();
+		dataObjMap = new TreeMap<String, String>();
 			
-        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT201), 		readFile(IT201_FILE_NAME));
-        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT201V), 		readFile(IT201V_FILE_NAME));
-        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT214), 		readFile(IT214_FILE_NAME));
-        	dataObjMap.put(getFormIdEnumValue(FORM_ID.W2), 			readFile(W2_FILE_NAME));
+        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT201), 	readFile(IT201_FILE_NAME));
+        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT201V), 	readFile(IT201V_FILE_NAME));
+        	dataObjMap.put(getFormIdEnumValue(FORM_ID.IT214), 	readFile(IT214_FILE_NAME));
+        	dataObjMap.put(getFormIdEnumValue(FORM_ID.W2), 		readFile(W2_FILE_NAME));
         	dataObjMap.put(getFormIdEnumValue(FORM_ID.DEPEXEMPT), 	readFile(DEP_INFO_FILE_NAME));
-        	dataObjMap.put(getFormIdEnumValue(FORM_ID.HMBR), 		readFile(HMBR_FILE_NAME));
+        	dataObjMap.put(getFormIdEnumValue(FORM_ID.HMBR), 	readFile(HMBR_FILE_NAME));
         	dataObjMap.put(getFormIdEnumValue(FORM_ID.PAYMENT), 	readFile(PAYMENT_FILE_NAME));
 
             //logging ("loadFormDataFiles -- end");
@@ -147,8 +147,8 @@ public final class FormDataFactory {
 		try {					
 			fstream = new FileInputStream(filePath);
 			DataInputStream in = new DataInputStream(fstream);
-		    BufferedReader br = new BufferedReader(new InputStreamReader(in));
-		    String str;
+		    	BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			 String str;
 		    
 			while ((str = br.readLine()) != null) {
 				fileContent.append(str);		     
